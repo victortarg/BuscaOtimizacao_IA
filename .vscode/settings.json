@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./Q1/src/class",
+        "./Q1/src/algoritmos"
+    ]
+}
