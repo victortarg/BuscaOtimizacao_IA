@@ -1,5 +1,5 @@
 import numpy as np
-from optimizador_base import Problema # Sua classe Problema feita anteriormente
+from classes.problema import Problema # Sua classe Problema feita anteriormente
 
 def f1(x1, x2):
     return x1**2 + x2**2

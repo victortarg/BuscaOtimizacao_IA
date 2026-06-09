@@ -1,5 +1,5 @@
 import numpy as np
-from optimizador_base import OptimizadorBase
+from classes.optimizador_base import OptimizadorBase
 
 class LocalRandomSearch(OptimizadorBase):
     def __init__(self, problema, sigma=0.5, max_iter=1000, max_sem_melhora=50):

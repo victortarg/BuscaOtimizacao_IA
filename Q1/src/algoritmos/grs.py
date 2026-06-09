@@ -1,4 +1,4 @@
-from optimizador_base import OptimizadorBase
+from classes.optimizador_base import OptimizadorBase
 import numpy as np
 
 class GlobalRandomSearch(OptimizadorBase):

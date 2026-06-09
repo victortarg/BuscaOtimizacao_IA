@@ -1,5 +1,5 @@
 import numpy as np
-from optimizador_base import OptimizadorBase 
+from classes.optimizador_base import OptimizadorBase 
 
 class HillClimbing(OptimizadorBase):
     def __init__(self, problema, epsilon=0.1, max_iter=1000, max_sem_melhora=50):

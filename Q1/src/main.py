@@ -1,7 +1,7 @@
-from problemas import lista_problemas
-from grs import GlobalRandomSearch
-from lrs import LocalRandomSearch
-from hill_climbing import HillClimbing
+from classes.problemas import lista_problemas
+from algoritmos.grs import GlobalRandomSearch
+from algoritmos.lrs import LocalRandomSearch
+from algoritmos.hill_climbing import HillClimbing
 
 def rodar_experimentos():
     rodadas = 100
