@@ -25,12 +25,6 @@ class DronePCV:
             )
 
     def calcular_custo_rota(self, cromossomo):
-        """
-        Métrica de Aptidão: Calcula a distância total percorrida em 3D.
-        Rota: Origem -> Cidades do Cromossomo -> Origem.
-        """
-        # Reconstrói a rota real convertendo os índices em coordenadas
-        # Adiciona o índice 0 (origem) no início e no fim
         rota_indices = np.concatenate(([0], cromossomo + 1, [0]))
         coordenadas_rota = self.pontos[rota_indices]
         
