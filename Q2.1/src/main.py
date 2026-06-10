@@ -1,10 +1,11 @@
 import numpy as np
 from tempera_simulada import TemperaSimulada
+from visualizacao_rainhas import plotar_tabuleiro_rainhas
 
 class OitoRainhas:
     def __init__(self):
         self.n = 8
-        self.max_ataques = 28 # Total possível de pares (8*7)/2
+        self.max_ataques = 28 
 
     def gerar_candidato_inicial(self):
         """Gera um vetor inicial com as rainhas em linhas aleatórias."""
@@ -18,7 +19,7 @@ class OitoRainhas:
         h = 0
         for i in range(self.n):
             for j in range(i + 1, self.n):
-                # Se estão na mesma linha ou na mesma diagonal
+                # verifia se estão na mesma linha ou na mesma diagonal
                 if x[i] == x[j] or abs(x[i] - x[j]) == abs(i - j):
                     h += 1
         return self.max_ataques - h
@@ -41,7 +42,10 @@ class OitoRainhas:
 
 def buscar_92_solucoes():
     problema = OitoRainhas()
-    ts = TemperaSimulada(problema, T_inicial=100.0, alpha=0.99, max_iter=5000)
+    # Melhor resultado foram para os parametro T_inicial=70.0, alpha=0.95, max_iter=5000
+    # 92 soluções distintas encontradas
+    # Custo computacional total: 333 execuções completas da Têmpera Simulada.
+    ts = TemperaSimulada(problema, T_inicial=70.0, alpha=0.95, max_iter=5000)
     
     solucoes_unicas = set()
     tentativas = 0
@@ -58,8 +62,13 @@ def buscar_92_solucoes():
                 solucoes_unicas.add(solucao)
                 print(f"Solução {len(solucoes_unicas)}/92 encontrada! Vetor: {solucao} | Tentativas totais: {tentativas}")
 
-    print("\n[SUCESSO] Todas as 92 soluções distintas foram encontradas!")
+    print("\n92 soluções distintas encontradas")
     print(f"Custo computacional total: {tentativas} execuções completas da Têmpera Simulada.")
+    
+    numero_solucao=30
+    primeira_solucao = list(solucoes_unicas)[numero_solucao-1]
+    
+    plotar_tabuleiro_rainhas(primeira_solucao, numero_solucao)
 
 if __name__ == "__main__":
     buscar_92_solucoes()
