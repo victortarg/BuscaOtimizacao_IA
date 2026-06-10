@@ -10,7 +10,6 @@ class OptimizadorBase:
         return np.random.uniform(self.problema.limites[:, 0], self.problema.limites[:, 1])
 
     def gerar_candidato(self, x_best):
-        """Função implementada pelas subclasses para gerar um candidato a partir do x_best."""
         raise NotImplementedError
 
     def e_melhor(self, f_cand, f_best):
@@ -19,8 +18,7 @@ class OptimizadorBase:
         return f_cand > f_best
 
     def otimizar(self):
-        """Executa uma rodada do algoritmo."""
-        # Ponto inicial aleatório dentro dos limites (pode ser sobrescrito pelo Hill Climbing)
+        # Ponto inicial aleatório dentro dos limites
         dimensoes = len(self.problema.limites)
         x_best = self._gerar_ponto_inicial()
         f_best = self.problema.avaliar(x_best)
@@ -47,16 +45,15 @@ class OptimizadorBase:
         return x_best, f_best
 
     def executar_experimento(self, num_rodadas=100):
-        """Executa R rodadas e coleta os resultados (sem usar scipy!)."""
+        """Executa R rodadas e coleta os resultados."""
         solucoes = []
         for _ in range(num_rodadas):
             x_best, _ = self.otimizar()
-            # Arredondamos para 4 casas decimais para conseguir agrupar e calcular a moda
             solucoes.append(np.round(x_best, 4)) 
             
         solucoes_array = np.array(solucoes)
         
-        # Encontrando a moda puramente com o Numpy (conta as linhas únicas e pega a mais frequente)
+        # Encontrando a moda
         valores_unicos, contagens = np.unique(solucoes_array, axis=0, return_counts=True)
         indice_moda = np.argmax(contagens)
         moda_solucao = valores_unicos[indice_moda]

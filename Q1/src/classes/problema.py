@@ -4,7 +4,7 @@ class Problema:
     """Encapsula a função matemática, os limites (caixa) e o objetivo (min/max)."""
     def __init__(self, funcao, limites, tipo="min"):
         self.funcao = funcao
-        self.limites = np.array(limites) # Ex: np.array([[-100, 100], [-100, 100]])
+        self.limites = np.array(limites) 
         self.tipo = tipo # "min" ou "max"
         
     def avaliar(self, x):
